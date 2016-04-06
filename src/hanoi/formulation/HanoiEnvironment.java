@@ -5,6 +5,7 @@ import es.deusto.ingenieria.is.search.formulation.State;
 
 public class HanoiEnvironment extends State{
 
+	int prueba;
 	private int cantPieces;
 	private List<Stick> sticks;
 	
