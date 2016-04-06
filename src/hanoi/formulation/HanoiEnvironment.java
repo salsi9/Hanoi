@@ -5,15 +5,15 @@ import es.deusto.ingenieria.is.search.formulation.State;
 
 public class HanoiEnvironment extends State{
 
-	int prueba;
 	private int cantPieces;
 	private List<Stick> sticks;
+	private List<Piece> pieces;
 	
 	public HanoiEnvironment(int nStick, int nPiece){
 		this.cantPieces=nPiece;
-		this.sticks.add(new Stick(nPiece));
-		for(int i=0; i<(nStick-1);i++){
-			this.sticks.add(new Stick());
+		this.sticks.add(new Stick(nPiece,1));
+		for(int i=2; i<=nStick;i++){
+			this.sticks.add(new Stick(0,i));
 		}
 	}
 	
@@ -41,11 +41,12 @@ public class HanoiEnvironment extends State{
 	}
 
 	public void movePiece(int piece, int stick) {
-		if (true) {
+		if (piece>0 && piece<=this.cantPieces && stick>0 && stick<=this.sticks.size()) {
 			for(int i=0;i<this.sticks.size();i++){
 				for(int j=0;j<this.sticks.get(i).getPieces().size();j++){
-					if(this.sticks.get(i).getPieces().get(j).getSice()==piece){
-						this.sticks.get(stick).getPieces().add(this.sticks.get(i).getPieces().get(j));
+					if(this.pieces.get(j).getSice()==piece){
+						this.sticks.get(i).getPieces().get(j).setLocatio(stick);
+						this.sticks.get(stick).getPieces().add(this.pieces.get(j));
 						this.sticks.get(i).getPieces().remove(j);
 					}
 				}
@@ -54,12 +55,10 @@ public class HanoiEnvironment extends State{
 	}
 	
 	public HanoiEnvironment clone() {
-		HanoiEnvironment newEnv = new HanoiEnvironment(this.getSticks().size(),this.getCantPieces());
-		
-		for(Stick stick : this.sticks) {
-			newEnv.movePiece(9, 8);
-		}
-		
+		HanoiEnvironment newEnv = new HanoiEnvironment(this.sticks.size(),this.getCantPieces());		
+		for(int i=1; i<=this.getCantPieces(); i++) {
+			newEnv.movePiece(i, 1);
+		}		
 		return newEnv;
 	}
 	
