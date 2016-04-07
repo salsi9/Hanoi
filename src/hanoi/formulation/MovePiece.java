@@ -7,6 +7,8 @@ public class MovePiece extends Operator{
 	private int piece;
 	private int stick;
 	
+	//borrame
+	
 	public MovePiece(int piece, int stick) {
 		this.piece = piece;
 		this.stick = stick;
