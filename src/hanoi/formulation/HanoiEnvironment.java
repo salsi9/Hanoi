@@ -5,12 +5,13 @@ import es.deusto.ingenieria.is.search.formulation.State;
 
 public class HanoiEnvironment extends State{
 
-	private int cantPieces;
 	private List<Stick> sticks;
 	private List<Piece> pieces;
 	
 	public HanoiEnvironment(int nStick, int nPiece){
-		this.cantPieces=nPiece;
+		for(int i=1;i<=nPiece;i++){
+			this.pieces.add(new Piece(i, 1));
+		}
 		this.sticks.add(new Stick(nPiece,1));
 		for(int i=2; i<=nStick;i++){
 			this.sticks.add(new Stick(0,i));
@@ -21,16 +22,22 @@ public class HanoiEnvironment extends State{
 		return this.sticks;
 	}
 	
-	public int getCantPieces(){
-		return this.cantPieces;
+	public List<Piece> getPieces(){
+		return this.pieces;
 	}
 	
 	@Override
 	public boolean equals(Object obj) {
 		if (obj != null && obj instanceof HanoiEnvironment) {
 			List<Stick> auxSticks = ((HanoiEnvironment)obj).getSticks();
+			List<Piece> auxPieces = ((HanoiEnvironment)obj).getPieces();
 			for (int i=0; i<this.sticks.size(); i++) {
 				if (!this.sticks.get(i).equals(auxSticks.get(i))) {
+					return false;
+				}
+			}
+			for (int i=0; i<this.pieces.size(); i++) {
+				if (!this.pieces.get(i).equals(auxPieces.get(i))) {
 					return false;
 				}
 			}
@@ -41,7 +48,7 @@ public class HanoiEnvironment extends State{
 	}
 
 	public void movePiece(int piece, int stick) {
-		if (piece>0 && piece<=this.cantPieces && stick>0 && stick<=this.sticks.size()) {
+		if (piece>0 && piece<=this.pieces.size() && stick>0 && stick<=this.sticks.size()) {
 			for(int i=0;i<this.sticks.size();i++){
 				for(int j=0;j<this.sticks.get(i).getPieces().size();j++){
 					if(this.pieces.get(j).getSice()==piece){
@@ -55,8 +62,8 @@ public class HanoiEnvironment extends State{
 	}
 	
 	public HanoiEnvironment clone() {
-		HanoiEnvironment newEnv = new HanoiEnvironment(this.sticks.size(),this.getCantPieces());		
-		for(int i=1; i<=this.getCantPieces(); i++) {
+		HanoiEnvironment newEnv = new HanoiEnvironment(this.sticks.size(),this.pieces.size());		
+		for(int i=1; i<=this.pieces.size(); i++) {
 			newEnv.movePiece(i, 1);
 		}		
 		return newEnv;
