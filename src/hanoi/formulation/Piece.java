@@ -1,30 +1,28 @@
 package hanoi.formulation;
 public class Piece {
 
-	private int sice;
-	private int location;
+	private int size;
 	
-	public Piece(int sice, int location){
-		this.sice=sice;
-		this.location=location;
+	public Piece(int size){
+		this.size=size;
 	}
 	
-	public int getSice(){
-		return this.sice;
+	public int getSize(){
+		return this.size;
 	}
 	
-	public int getLocation(){
-		return this.location;
+	public void setSize(int size){
+		this.size=size;
 	}
 	
-	public void setLocatio(int location){
-		this.location=location;
+	public Piece clone(){
+		return new Piece(this.size);
 	}
 	
 	public boolean equals(Object obj) {
 		if (obj != null && obj instanceof Piece) {
 			Piece pieceAux = (Piece)obj;
-			return this.sice == pieceAux.sice;
+			return (this.size == pieceAux.size);
 		} else {
 			return false;
 		}

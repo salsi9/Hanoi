@@ -1,4 +1,5 @@
 package hanoi.formulation;
+import java.util.ArrayList;
 import java.util.List;
 
 import es.deusto.ingenieria.is.search.formulation.State;
@@ -6,15 +7,16 @@ import es.deusto.ingenieria.is.search.formulation.State;
 public class HanoiEnvironment extends State{
 
 	private List<Stick> sticks;
-	private List<Piece> pieces;
+	private int nPieces;
 	
 	public HanoiEnvironment(int nStick, int nPiece){
-		for(int i=1;i<=nPiece;i++){
-			this.pieces.add(new Piece(i, 1));
+		this.sticks = new ArrayList<Stick>();
+		this.nPieces=nPiece;
+		for(int i=1; i<=nStick;i++){
+			this.sticks.add(new Stick(i));
 		}
-		this.sticks.add(new Stick(nPiece,1));
-		for(int i=2; i<=nStick;i++){
-			this.sticks.add(new Stick(0,i));
+		for(int i=nPiece; i>0;i--){
+			this.sticks.get(0).addPiece(new Piece(nPiece));
 		}
 	}
 	
@@ -22,22 +24,20 @@ public class HanoiEnvironment extends State{
 		return this.sticks;
 	}
 	
-	public List<Piece> getPieces(){
-		return this.pieces;
+	public int getNPieces(){
+		return this.nPieces;
+	}
+	
+	public List<Piece> getPieces(Stick stick){
+		return stick.getPieces();
 	}
 	
 	@Override
 	public boolean equals(Object obj) {
 		if (obj != null && obj instanceof HanoiEnvironment) {
 			List<Stick> auxSticks = ((HanoiEnvironment)obj).getSticks();
-			List<Piece> auxPieces = ((HanoiEnvironment)obj).getPieces();
 			for (int i=0; i<this.sticks.size(); i++) {
 				if (!this.sticks.get(i).equals(auxSticks.get(i))) {
-					return false;
-				}
-			}
-			for (int i=0; i<this.pieces.size(); i++) {
-				if (!this.pieces.get(i).equals(auxPieces.get(i))) {
 					return false;
 				}
 			}
@@ -47,24 +47,15 @@ public class HanoiEnvironment extends State{
 		}
 	}
 
-	public void movePiece(int piece, int stick) {
-		if (piece>0 && piece<=this.pieces.size() && stick>0 && stick<=this.sticks.size()) {
-			for(int i=0;i<this.sticks.size();i++){
-				for(int j=0;j<this.sticks.get(i).getPieces().size();j++){
-					if(this.pieces.get(j).getSice()==piece){
-						this.sticks.get(i).getPieces().get(j).setLocatio(stick);
-						this.sticks.get(stick).getPieces().add(this.pieces.get(j));
-						this.sticks.get(i).getPieces().remove(j);
-					}
-				}
-			}
-		}
+	public void movePiece(int stick1, int stick2) {
+		this.sticks.get(stick2).addPiece(this.sticks.get(stick1).getFPiece());
+		this.sticks.get(stick1).removeFPiece();
 	}
 	
 	public HanoiEnvironment clone() {
-		HanoiEnvironment newEnv = new HanoiEnvironment(this.sticks.size(),this.pieces.size());		
-		for(int i=1; i<=this.pieces.size(); i++) {
-			newEnv.movePiece(i, 1);
+		HanoiEnvironment newEnv = new HanoiEnvironment(this.sticks.size(),this.nPieces);		
+		for(Stick stick : this.sticks) {
+			newEnv.getSticks().add(stick.clone());
 		}		
 		return newEnv;
 	}
