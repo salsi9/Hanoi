@@ -29,7 +29,7 @@ public class HanoiProblem extends Problem{
 	public boolean isFinalState(State state) {
 		if (state != null && state instanceof HanoiEnvironment) {
 			HanoiEnvironment hannoiEnv = (HanoiEnvironment) state;
-			if (hannoiEnv.getSticks().get(fStick).getPieces().size() == nPieces)
+			if (hannoiEnv.getSticks().get(this.fStick).getPieces().size() == nPieces)
 				return true;
 		}
 		return false;
@@ -72,5 +72,20 @@ public class HanoiProblem extends Problem{
 		} else {
 			System.out.println("\n- Unable to find the solution!     :(");
 		}
+	}
+	
+	public static void main(String[] args) {
+		HanoiProblem hp1 = new HanoiProblem(3, 3, 2);
+		HanoiProblem hp2 = new HanoiProblem(3, 3, 0);
+		HanoiEnvironment he = (HanoiEnvironment)hp1.gatherInitialPercepts();
+		System.out.println(he.toString());
+		if(hp1.isFinalState(he))
+			System.out.println("False, is not final state.");
+		else
+			System.out.println("OK, is not final state.");
+		if(hp2.isFinalState(he))
+			System.out.println("OK, is final state.");
+		else
+			System.out.println("False, is fina state.");
 	}
 }

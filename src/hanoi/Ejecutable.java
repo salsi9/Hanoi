@@ -16,7 +16,7 @@ public class Ejecutable {
 		System.out.println("How many pieces: ");
 		nPiece=in.nextInt();
 		System.out.println("Which is the final tower: ");
-		fTower=in.nextInt();
+		fTower=(in.nextInt()-1);
 		HanoiProblem problem = new HanoiProblem(nStick, nPiece, fTower);
 		HanoiEnvironment environment = (HanoiEnvironment) problem.gatherInitialPercepts();
 		problem.addInitialState(environment);
