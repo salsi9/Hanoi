@@ -9,6 +9,11 @@ public class HanoiEnvironment extends State{
 	private List<Stick> sticks;
 	private int nPieces;
 	
+	public HanoiEnvironment(){
+		sticks=new ArrayList<Stick>();
+		nPieces=0;
+	}
+	
 	public HanoiEnvironment(int nStick, int nPiece){
 		this.sticks = new ArrayList<Stick>();
 		this.nPieces=nPiece;
@@ -37,7 +42,7 @@ public class HanoiEnvironment extends State{
 		if (obj != null && obj instanceof HanoiEnvironment) {
 			List<Stick> auxSticks = ((HanoiEnvironment)obj).getSticks();
 			for (int i=0; i<this.sticks.size(); i++) {
-				if (!this.sticks.get(i).equals(auxSticks.get(i))) {
+				if (!this.sticks.get(i).getPieces().equals(auxSticks.get(i).getPieces())) {
 					return false;
 				}
 			}
@@ -61,10 +66,10 @@ public class HanoiEnvironment extends State{
 	}
 	
 	public HanoiEnvironment clone() {
-		HanoiEnvironment newEnv = new HanoiEnvironment(this.sticks.size(),this.nPieces);		
-		for(Stick stick : this.sticks) {
+		HanoiEnvironment newEnv = new HanoiEnvironment();
+		for (Stick stick : sticks) {
 			newEnv.getSticks().add(stick.clone());
-		}		
+		}
 		return newEnv;
 	}
 	
@@ -92,5 +97,12 @@ public class HanoiEnvironment extends State{
 			System.out.println("It is WRONG, they are different.");
 		else
 			System.out.println("It is OK, they are different.");
+		System.out.println("ncEnvironment: "+he[4].toString());
+		he[4]=he[2].clone();
+		System.out.println("cEnvironment: "+he[4].toString());
+		if(he[4].equals(he[2]))
+			System.out.println("It is OK, it is a clone.");
+		else
+			System.out.println("It is WRONG, it is a clone.");
 	}
 }

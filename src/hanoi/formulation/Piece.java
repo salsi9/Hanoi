@@ -44,5 +44,13 @@ public class Piece {
 			System.out.println("It is WRONG, they are different.");
 		else
 			System.out.println("It is OK, they are different.");
+		System.out.println("ncPiece: "+pieces[4].getSize());
+		pieces[4]=pieces[2].clone();
+		System.out.println("cPiece: "+pieces[4].getSize());
+		if(pieces[4].equals(pieces[2]))
+			System.out.println("It is OK, it is a clone.");
+		else
+			System.out.println("It is WRONG, it is a clone.");
+		
 	}
 }

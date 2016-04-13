@@ -91,8 +91,8 @@ public class Stick {
 		for(int i=0; i<5; i++){
 			System.out.println(sticks[i].toString());			
 		}
-		for(int i=0; i<5; i++){
-			sticks[0].addPiece(new Piece(i+1));			
+		for(int i=5; i>0; i--){
+			sticks[0].addPiece(new Piece(i));			
 		}
 		for(int i=0; i<5; i++){
 			System.out.println(sticks[i].toString());			
@@ -115,5 +115,12 @@ public class Stick {
 			System.out.println("It is WRONG, they are different.");
 		else
 			System.out.println("It is OK, they are different.");
+		System.out.println("ncStick: "+sticks[4].toString());
+		sticks[4]=sticks[2].clone();
+		System.out.println("cStick: "+sticks[4].toString());
+		if(sticks[4].equals(sticks[2]))
+			System.out.println("It is OK, it is a clone.");
+		else
+			System.out.println("It is WRONG, it is a clone.");
 	}
 }
