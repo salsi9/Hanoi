@@ -24,9 +24,9 @@ public class Piece {
 		}
 	}
 	
-	/*public Piece clone(){
+	public Piece clone(){
 		return new Piece(this.size);
-	}*/
+	}
 	
 	public static void main(String[]arg){
 		Piece[]pieces= new Piece[5];

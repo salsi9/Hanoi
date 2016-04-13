@@ -60,13 +60,13 @@ public class HanoiEnvironment extends State{
 		return result;
 	}
 	
-	/*public HanoiEnvironment clone() {
+	public HanoiEnvironment clone() {
 		HanoiEnvironment newEnv = new HanoiEnvironment(this.sticks.size(),this.nPieces);		
 		for(Stick stick : this.sticks) {
 			newEnv.getSticks().add(stick.clone());
 		}		
 		return newEnv;
-	}*/
+	}
 	
 	public static void main(String[]arg){
 		HanoiEnvironment[]he = new HanoiEnvironment[5];

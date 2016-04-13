@@ -27,7 +27,7 @@ public class MovePiece extends Operator{
 	}	
 	
 	protected State effect(State state) {		
-		HanoiEnvironment newEnv = (HanoiEnvironment)state;	//add clone later
+		HanoiEnvironment newEnv = ((HanoiEnvironment)state).clone();
 		newEnv.movePiece(this.stick1, this.stick2);		
 		return newEnv;
 	}

@@ -75,13 +75,13 @@ public class Stick {
 		return (result+"\n");
 	}
 	
-	/*public Stick clone(){
+	public Stick clone(){
 		Stick newStick = new Stick(this.location);
 		for(Piece piece : pieces){
 			newStick.addPiece(piece.clone());			
 		}
 		return newStick;
-	}*/
+	}
 	
 	public static void main(String[]arg){
 		Stick[]sticks = new Stick[5];
