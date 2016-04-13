@@ -20,7 +20,9 @@ public class Ejecutable {
 		HanoiProblem problem = new HanoiProblem(nStick, nPiece, fTower);
 		HanoiEnvironment environment = (HanoiEnvironment) problem.gatherInitialPercepts();
 		problem.addInitialState(environment);
-		problem.solve(DepthFS.getInstance());
-		problem.solve(BreadthFS.getInstance());
+		System.out.println(environment.toString()+"\n"+fTower);
+		
+		//problem.solve(DepthFS.getInstance());
+		//problem.solve(BreadthFS.getInstance());
 	}
 }

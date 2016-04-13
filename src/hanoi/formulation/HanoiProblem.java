@@ -35,7 +35,7 @@ public class HanoiProblem extends Problem{
 		return false;
 	}
 	
-	public void solve(SearchMethod searchMethod) {
+	/*public void solve(SearchMethod searchMethod) {
 		SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss.S");
 		Date beginDate = GregorianCalendar.getInstance().getTime();
 		System.out.println(
@@ -72,7 +72,7 @@ public class HanoiProblem extends Problem{
 		} else {
 			System.out.println("\n- Unable to find the solution!     :(");
 		}
-	}
+	}*/
 	
 	public static void main(String[] args) {
 		HanoiProblem hp1 = new HanoiProblem(3, 3, 2);
