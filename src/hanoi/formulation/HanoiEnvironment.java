@@ -58,7 +58,7 @@ public class HanoiEnvironment extends State{
 	}
 	
 	public String toString() {
-		String result = "Hanoi \n";
+		String result = "\n"+"Hanoi:";
 		for(int i=0; i<this.sticks.size(); i++){
 			result=result+this.sticks.get(i).toString();
 		}

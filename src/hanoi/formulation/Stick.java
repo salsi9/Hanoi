@@ -68,11 +68,11 @@ public class Stick {
 	}
 	
 	public String toString(){
-		String result="Stick "+this.getLocation()+": ";
+		String result="\n"+"Stick "+this.getLocation()+": ";
 		for(int i=0; i<this.pieces.size(); i++){
 			result=result+"["+this.pieces.get(i).getSize()+"]";
 		}
-		return (result+"\n");
+		return result;
 	}
 	
 	public Stick clone(){
