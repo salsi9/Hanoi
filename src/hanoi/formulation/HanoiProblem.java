@@ -19,7 +19,18 @@ public class HanoiProblem extends Problem{
 	public HanoiProblem(int nSticks, int nPieces, int fStick) {
 		this.nSticks=nSticks;
 		this.nPieces=nPieces;
-		this.fStick=fStick;		
+		this.fStick=fStick;
+		this.createOperators();
+	}
+	
+	protected void createOperators() {
+		for (int i = 0; i < this.nSticks; i++) {
+			for (int j = 0; j < this.nSticks; j++) {
+				if (i != j) {
+					this.addOperator(new MovePiece(i, j));
+				}
+			}
+		}
 	}
 	
 	public State gatherInitialPercepts() {
