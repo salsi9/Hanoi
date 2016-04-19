@@ -1,8 +1,9 @@
 package hanoi;
 import java.util.Scanner;
-
 import es.deusto.ingenieria.is.search.algorithms.blind.BreadthFS;
 import es.deusto.ingenieria.is.search.algorithms.blind.DepthFS;
+import es.deusto.ingenieria.is.search.algorithms.heuristic.BestFS;
+import es.deusto.ingenieria.is.search.algorithms.heuristic.EvaluationFunction;
 import hanoi.formulation.HanoiEnvironment;
 import hanoi.formulation.HanoiProblem;
 
