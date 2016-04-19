@@ -3,9 +3,10 @@ import java.util.Scanner;
 import es.deusto.ingenieria.is.search.algorithms.blind.BreadthFS;
 import es.deusto.ingenieria.is.search.algorithms.blind.DepthFS;
 import es.deusto.ingenieria.is.search.algorithms.heuristic.BestFS;
-import es.deusto.ingenieria.is.search.algorithms.heuristic.EvaluationFunction;
 import hanoi.formulation.HanoiEnvironment;
 import hanoi.formulation.HanoiProblem;
+import hanoi.heuristics.Leftys2EvaluationFunction;
+import hanoi.heuristics.LeftysEvaluationFunction;
 import hanoi.heuristics.SearchEvaluationFunction;
 
 public class Ejecutable {
@@ -23,8 +24,12 @@ public class Ejecutable {
 		HanoiEnvironment environment = (HanoiEnvironment) problem.gatherInitialPercepts();
 		problem.addInitialState(environment);
 		System.out.println(environment.toString());		
-		problem.solve(DepthFS.getInstance());
+		/*problem.solve(DepthFS.getInstance());
 		problem.solve(BreadthFS.getInstance());
 		problem.solve(new BestFS(new SearchEvaluationFunction()));
+		System.out.println("\nTAKING INTO ACOUNT ONLY THE LEFT STICK");
+		problem.solve(new BestFS(new LeftysEvaluationFunction()));
+		System.out.println("\nTAKING INTO ACOUNT THE LEFT AND CENTRE STICKS");
+		problem.solve(new BestFS(new Leftys2EvaluationFunction()));*/
 	}
 }

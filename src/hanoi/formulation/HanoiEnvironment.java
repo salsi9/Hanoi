@@ -57,7 +57,7 @@ public class HanoiEnvironment extends State{
 		this.sticks.get(stick1).removeFPiece();
 	}
 	
-	public int numMovements(){
+	public int nMovements(){
 		int moves=0;
 		for(int i=0; i<this.sticks.size(); i++){
 			for(int j=0; j<this.sticks.size(); j++){
@@ -68,6 +68,14 @@ public class HanoiEnvironment extends State{
 			}
 		}
 		return moves;
+	}
+	
+	public int leftNPiece(){
+		return this.sticks.get(0).getNPieces();
+	}
+	
+	public int left2NPiece(){
+		return (this.sticks.get(0).getNPieces()+this.sticks.get(1).getNPieces());
 	}
 	
 	public String toString() {

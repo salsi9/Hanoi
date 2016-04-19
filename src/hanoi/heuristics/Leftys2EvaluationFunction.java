@@ -4,7 +4,7 @@ import es.deusto.ingenieria.is.search.algorithms.Node;
 import es.deusto.ingenieria.is.search.algorithms.heuristic.EvaluationFunction;
 import hanoi.formulation.HanoiEnvironment;
 
-public class SearchEvaluationFunction extends EvaluationFunction{
+public class Leftys2EvaluationFunction extends EvaluationFunction{
 
 	@Override
 	public double calculateG(Node arg0) {
@@ -15,7 +15,7 @@ public class SearchEvaluationFunction extends EvaluationFunction{
 	@Override
 	public double calculateH(Node arg0) {
 		HanoiEnvironment he = (HanoiEnvironment) arg0.getState();		
-		return he.nMovements();
+		return he.left2NPiece();
 	}
-
+	
 }
