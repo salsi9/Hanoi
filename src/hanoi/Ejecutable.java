@@ -6,6 +6,7 @@ import es.deusto.ingenieria.is.search.algorithms.heuristic.BestFS;
 import es.deusto.ingenieria.is.search.algorithms.heuristic.EvaluationFunction;
 import hanoi.formulation.HanoiEnvironment;
 import hanoi.formulation.HanoiProblem;
+import hanoi.heuristics.SearchEvaluationFunction;
 
 public class Ejecutable {
 
@@ -24,5 +25,6 @@ public class Ejecutable {
 		System.out.println(environment.toString());		
 		problem.solve(DepthFS.getInstance());
 		problem.solve(BreadthFS.getInstance());
+		problem.solve(new BestFS(new SearchEvaluationFunction()));
 	}
 }
