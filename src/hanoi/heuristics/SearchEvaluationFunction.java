@@ -8,8 +8,8 @@ public class SearchEvaluationFunction extends EvaluationFunction{
 
 	@Override
 	public double calculateG(Node arg0) {
-		// TODO Auto-generated method stub
-		return 0;
+		HanoiEnvironment he = (HanoiEnvironment) arg0.getState();		
+		return he.numMovements();
 	}
 
 	@Override
